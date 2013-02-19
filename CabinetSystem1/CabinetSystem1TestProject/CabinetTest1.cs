@@ -45,5 +45,13 @@ namespace CabinetSystem1TestProject
             var hasEmptyBox = cabinet.HasEmptyBox();
             Assert.IsTrue(hasEmptyBox);
         }
+
+        [TestMethod]
+        public void should_return_ticket_if_empty_box()
+        {
+            var cabinet = new Cabinet();
+            var ticket = cabinet.ReturnTicketIfEmptyBox();
+            Assert.IsNotNull(ticket);
+        }
     }
 }
