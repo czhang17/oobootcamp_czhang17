@@ -27,16 +27,4 @@ namespace CabinetSystem1
             return Bags[ticket];
         }
     }
-
-    public class Bag
-    {
-        public Bag()
-        {
-            
-        }
-    }
-
-    public class Ticket
-    {
-    }
 }
