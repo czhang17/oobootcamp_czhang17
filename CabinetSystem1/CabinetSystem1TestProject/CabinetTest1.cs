@@ -53,5 +53,14 @@ namespace CabinetSystem1TestProject
             var ticket = cabinet.ReturnTicketIfEmptyBox();
             Assert.IsNotNull(ticket);
         }
+
+        [TestMethod]
+        public void can_pick_bag_by_ticket()
+        {
+            var cabinet = new Cabinet();
+            var ticket = cabinet.ReturnTicketIfEmptyBox();
+            var bag = cabinet.PickBagbyTicket(ticket);
+            Assert.IsNotNull(bag);
+        }
     }
 }

@@ -1,7 +1,10 @@
-﻿namespace CabinetSystem1
+﻿using System.Collections.Generic;
+namespace CabinetSystem1
 {
     public class Cabinet
     {
+        private Dictionary<Ticket, Bag> Bags = new Dictionary<Ticket, Bag>();
+
         public bool HasEmptyBox()
         {
             return true;
@@ -9,19 +12,27 @@
 
         public Ticket ReturnTicketIfEmptyBox()
         {
-            if (this.HasEmptyBox())
-            {
-                Store();
-                return new Ticket();
-            }
-                
-            
-            return null;
+            return Store(new Bag());
         }
 
-        private void Store()
+        private Ticket Store(Bag bag)
+        {   
+            Ticket ticket = new Ticket();
+            Bags.Add(ticket, bag);
+            return ticket;
+        }
+
+        public Bag PickBagbyTicket(Ticket ticket)
         {
-            ;
+            return Bags[ticket];
+        }
+    }
+
+    public class Bag
+    {
+        public Bag()
+        {
+            
         }
     }
 
