@@ -37,6 +37,25 @@ namespace CabinetSystemTest
             Ticket ticket = cabinet.Store(aBag);
             Assert.AreEqual(aBag, cabinet.Pick(ticket));
         }
+
+        [TestMethod]
+        public void should_return_null_given_used_ticket_when_pick()
+        {
+
+            var cabinet = new Cabinet();
+            Bag newbag = new Bag();
+            Ticket ticket = cabinet.Store(newbag);
+            cabinet.Pick(ticket);
+            Assert.IsNull(cabinet.Pick(ticket));
+        }
+
+        [TestMethod]
+        public void should_return_null_given_invalid_ticket_when_pick()
+        {
+            Cabinet cabinet = new Cabinet();
+            Ticket ticket = new Ticket();
+            Assert.IsNull(cabinet.Pick(ticket));
+        }
     }
 }
 

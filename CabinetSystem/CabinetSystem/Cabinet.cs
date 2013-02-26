@@ -28,7 +28,16 @@ namespace CabinetSystem
 
         public Bag Pick(Ticket ticket)
         {
-            return _dicTicketBag.ContainsKey(ticket) ? _dicTicketBag[ticket] : null;
+            if (_dicTicketBag.ContainsKey(ticket))
+            {
+                var bag = _dicTicketBag[ticket];
+                _dicTicketBag.Remove(ticket);
+                return bag;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
