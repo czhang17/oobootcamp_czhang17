@@ -17,11 +17,6 @@ namespace CabinetSystem
             boxNumber = i;
         }
 
-        public Cabinet()
-        {
-            boxNumber = 10;
-        }
-
         public bool HasEmptyBox()
         {
             return _dicTicketBag.Count() < boxNumber;
