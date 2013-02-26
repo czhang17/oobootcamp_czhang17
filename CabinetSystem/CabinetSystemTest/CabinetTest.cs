@@ -53,8 +53,20 @@ namespace CabinetSystemTest
         public void should_return_null_given_invalid_ticket_when_pick()
         {
             Cabinet cabinet = new Cabinet();
+
             Ticket ticket = new Ticket();
             Assert.IsNull(cabinet.Pick(ticket));
+        }
+
+        [TestMethod]
+        public void should_return_null_given_no_empty_box()
+        {
+            var cabinet = new Cabinet(3);
+            cabinet.Store(new Bag());
+            cabinet.Store(new Bag());
+            cabinet.Store(new Bag());
+            Assert.IsNull(cabinet.Store(new Bag()));
+
         }
     }
 }

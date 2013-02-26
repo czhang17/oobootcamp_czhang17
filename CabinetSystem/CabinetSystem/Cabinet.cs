@@ -9,9 +9,22 @@ namespace CabinetSystem
     public class Cabinet
     {
         private Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
+        private int boxNumber;
+
+
+        public Cabinet(int i)
+        {
+            boxNumber = i;
+        }
+
+        public Cabinet()
+        {
+            boxNumber = 10;
+        }
+
         public bool HasEmptyBox()
         {
-            return true;
+            return _dicTicketBag.Count() < boxNumber;
         }
 
         public Ticket Store(Bag aBag)
