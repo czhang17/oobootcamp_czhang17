@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabinetSystem", "CabinetSystem\CabinetSystem.csproj", "{8F5772C0-6A28-4763-9409-2FDEA26BD56D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CabinetSystemTest", "CabinetSystemTest\CabinetSystemTest.csproj", "{DFE05B1F-B321-4C38-9991-F69FEBC04F1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{22794C31-08B2-4BB8-98B8-524139F1C464}"
+	ProjectSection(SolutionItems) = preProject
+		CabinetSystem.vsmdi = CabinetSystem.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CabinetSystem.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F5772C0-6A28-4763-9409-2FDEA26BD56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5772C0-6A28-4763-9409-2FDEA26BD56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5772C0-6A28-4763-9409-2FDEA26BD56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5772C0-6A28-4763-9409-2FDEA26BD56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE05B1F-B321-4C38-9991-F69FEBC04F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE05B1F-B321-4C38-9991-F69FEBC04F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE05B1F-B321-4C38-9991-F69FEBC04F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE05B1F-B321-4C38-9991-F69FEBC04F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
