@@ -59,7 +59,7 @@ namespace CabinetSystemTest
         }
 
         [TestMethod]
-        public void should_return_null_given_no_empty_box()
+        public void should_return_null_given_no_empty_box_when_store()
         {
             var cabinet = new Cabinet(boxNumber);
             for (int i = 0; i < boxNumber; i++)
