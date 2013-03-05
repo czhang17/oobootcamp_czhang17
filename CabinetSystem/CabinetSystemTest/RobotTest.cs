@@ -60,7 +60,7 @@ namespace CabinetSystemTest
         #endregion
 
         [TestMethod]
-        public void should_return_true_when_cabinet_added()
+        public void should_return_true_given_cabinet_when_add_cabinet()
         {
             var robot = new Robot();
             Cabinet c1 = new Cabinet(2);
@@ -68,10 +68,26 @@ namespace CabinetSystemTest
             
         }
         [TestMethod]
-        public void should_return_false_when_null_cabinet_added()
+        public void should_return_false_given_null_cabinet_when_add_cabinet()
         {
             var robot = new Robot();
             Assert.IsFalse(robot.Add(null));
         }
+
+        [TestMethod]
+        public void should_return_true_given_robot_with_empty_cabinet_when_check_availability()
+        {
+            var robot = new Robot();
+            robot.Add(new Cabinet(50));
+            Assert.IsTrue(robot.HasEmptyBox());
+        }
+
+        [TestMethod]
+        public void should_return_false_given_null_cabinet_when_check_availability()
+        {
+            var robot = new Robot();
+            Assert.IsFalse( robot.HasEmptyBox());
+        }
+
     }
 }

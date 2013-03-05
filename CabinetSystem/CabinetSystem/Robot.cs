@@ -15,5 +15,12 @@ namespace CabinetSystem
             _cabinets.Add(c1);
             return true;
         }
+
+        public bool HasEmptyBox()
+        {
+            if (_cabinets.Count == 0) return false;
+
+            return _cabinets[0].HasEmptyBox();
+        }
     }
 }
