@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using CabinetSystem;
+﻿using CabinetSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CabinetSystemTest
@@ -12,30 +9,11 @@ namespace CabinetSystemTest
     [TestClass]
     public class RobotTest
     {
-        public RobotTest()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
-        private TestContext testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        public TestContext TestContext { get; set; }
 
         #region Additional test attributes
         //
@@ -63,7 +41,7 @@ namespace CabinetSystemTest
         public void should_return_true_given_cabinet_when_add_cabinet()
         {
             var robot = new Robot();
-            Cabinet c1 = new Cabinet(2);
+            var c1 = new Cabinet(2);
             Assert.IsTrue(robot.Add(c1));
             
         }
