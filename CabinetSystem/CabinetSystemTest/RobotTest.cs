@@ -1,4 +1,5 @@
-﻿using CabinetSystem;
+﻿using System;
+using CabinetSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CabinetSystemTest
@@ -37,6 +38,15 @@ namespace CabinetSystemTest
         //
         #endregion
 
+        private static Robot SetupTwoCabinetRobot()
+        {
+            Robot robot = new Robot();
+            robot.Add(new Cabinet(50));
+            robot.Add(new Cabinet(50));
+
+            return robot;
+        }
+
         [TestMethod]
         public void should_return_true_given_cabinet_when_add_cabinet()
         {
@@ -70,10 +80,7 @@ namespace CabinetSystemTest
         [TestMethod]
         public void should_store_bag_given_empty_cabinet()
         {
-            var robot = new Robot();
-            var cabinet = new Cabinet(50);
-
-            robot.Add(cabinet);
+            var robot = SetupTwoCabinetRobot();
 
             Bag aBag = new Bag();
             Ticket ticket = robot.Store(aBag);
@@ -95,11 +102,41 @@ namespace CabinetSystemTest
         }
 
         [TestMethod]
-        public void should_return_bag_given_valid_ticket()
+        [ExpectedException(typeof(ArgumentException))]
+        public void should_throw_argument_exception_given_null_when_store_bag()
+        {
+            var robot = SetupTwoCabinetRobot();
+            robot.Store(null);
+        }
+
+
+
+        [TestMethod]
+        public void should_store_bags_sequentially_given_bags()
         {
             var robot = new Robot();
-            var cabinet = new Cabinet(50);
-            robot.Add(cabinet);
+            var cabinet1 = new Cabinet(1);
+            var cabinet2 = new Cabinet(1);
+
+            robot.Add(cabinet1);
+            robot.Add(cabinet2);
+
+            var bag1 = new Bag();
+            var bag2 = new Bag();
+
+            robot.Store(bag1);
+            Assert.IsFalse(cabinet1.HasEmptyBox());
+            Assert.IsTrue(cabinet2.HasEmptyBox());
+
+            robot.Store(bag2);
+            Assert.IsFalse(cabinet1.HasEmptyBox());
+            Assert.IsFalse(cabinet2.HasEmptyBox());
+        }
+
+        [TestMethod]
+        public void should_return_bag_given_valid_ticket()
+        {
+            var robot = SetupTwoCabinetRobot();
 
             Bag bagToStore = new Bag();
             Ticket ticket = robot.Store(bagToStore);
