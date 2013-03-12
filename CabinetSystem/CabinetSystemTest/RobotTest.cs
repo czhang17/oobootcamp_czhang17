@@ -93,5 +93,19 @@ namespace CabinetSystemTest
             Ticket ticket = robot.Store(bagB);
             Assert.IsNull(ticket);
         }
+
+        [TestMethod]
+        public void should_return_bag_given_valid_ticket()
+        {
+            var robot = new Robot();
+            var cabinet = new Cabinet(50);
+            robot.Add(cabinet);
+
+            Bag bagToStore = new Bag();
+            Ticket ticket = robot.Store(bagToStore);
+            Bag bagPicked = robot.Pick(ticket);
+
+            Assert.AreEqual(bagToStore, bagPicked);
+        }
     }
 }

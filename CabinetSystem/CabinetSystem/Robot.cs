@@ -33,5 +33,10 @@ namespace CabinetSystem
 
             return (emptyCabinet) == null ? null : emptyCabinet.Store(bag);
         }
+
+        public Bag Pick(Ticket ticket)
+        {
+            return _cabinets.Select(cabinet => cabinet.Pick(ticket)).FirstOrDefault(bag => bag != null);
+        }
     }
 }
