@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CabinetSystem;
+using CabinetSystemTest;
 
 namespace CabinetSystem
 {
@@ -22,6 +23,15 @@ namespace CabinetSystem
             if (_cabinets.Count == 0) return false;
 
             return _cabinets.Any(x => x.HasEmptyBox());
+        }
+
+        public Ticket Store(Bag bag)
+        {
+            if (bag == null) throw new ArgumentException("Null bag is not allowed!");
+
+            var emptyCabinet = _cabinets.FirstOrDefault(x => x.HasEmptyBox());
+
+            return (emptyCabinet) == null ? null : emptyCabinet.Store(bag);
         }
     }
 }
