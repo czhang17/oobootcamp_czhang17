@@ -38,13 +38,18 @@ namespace CabinetSystemTest
         //
         #endregion
 
-        private static Robot SetupTwoCabinetRobot()
+        private static Robot SetupTwoCabinetRobot(int capacity1, int capacity2)
         {
             Robot robot = new Robot();
-            robot.Add(new Cabinet(50));
-            robot.Add(new Cabinet(50));
+            robot.Add(new Cabinet(capacity1));
+            robot.Add(new Cabinet(capacity2));
 
             return robot;
+        }
+
+        private static Robot SetupTwoCabinetRobot()
+        {
+            return SetupTwoCabinetRobot(50, 50);
         }
 
         [TestMethod]
@@ -109,17 +114,10 @@ namespace CabinetSystemTest
             robot.Store(null);
         }
 
-
-
         [TestMethod]
         public void should_store_bags_sequentially_given_bags()
         {
-            var robot = new Robot();
-            var cabinet1 = new Cabinet(1);
-            var cabinet2 = new Cabinet(1);
-
-            robot.Add(cabinet1);
-            robot.Add(cabinet2);
+            var robot = SetupTwoCabinetRobot(1, 1);
 
             var bag1 = new Bag();
             var bag2 = new Bag();
