@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CabinetSystem;
 
 namespace CabinetSystem
@@ -20,7 +21,7 @@ namespace CabinetSystem
         {
             if (_cabinets.Count == 0) return false;
 
-            return _cabinets[0].HasEmptyBox();
+            return _cabinets.Any(x => x.HasEmptyBox());
         }
     }
 }
