@@ -80,5 +80,18 @@ namespace CabinetSystemTest
             Assert.IsNotNull(ticket);
         }
 
+        [TestMethod]
+        public void should_not_store_bag_given_full_cabinet()
+        {
+            var robot = new Robot();
+            var cabinet = new Cabinet(1);
+            robot.Add(cabinet);
+            var bagA = new Bag();
+            robot.Store(bagA);
+
+            var bagB = new Bag();
+            Ticket ticket = robot.Store(bagB);
+            Assert.IsNull(ticket);
+        }
     }
 }
