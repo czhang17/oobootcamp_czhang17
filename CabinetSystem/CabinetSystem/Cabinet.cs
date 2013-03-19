@@ -6,6 +6,10 @@ using CabinetSystemTest;
 
 namespace CabinetSystem
 {
+    public class NoEmptyBoxException : ApplicationException
+    {
+    }
+
     public class Cabinet
     {
         private Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
@@ -24,28 +28,26 @@ namespace CabinetSystem
 
         public Ticket Store(Bag aBag)
         {
-            if (HasEmptyBox())
+            if (!HasEmptyBox())
             {
-                Ticket ticket = new Ticket();
-                _dicTicketBag.Add(ticket,aBag);
-                return ticket;
-
+                throw new NoEmptyBoxException();
             }
-            return null;
+
+            var ticket = new Ticket();
+            _dicTicketBag.Add(ticket,aBag);
+            return ticket;
         }
 
         public Bag Pick(Ticket ticket)
         {
-            if (_dicTicketBag.ContainsKey(ticket))
-            {
-                var bag = _dicTicketBag[ticket];
-                _dicTicketBag.Remove(ticket);
-                return bag;
-            }
-            else
+            if (!_dicTicketBag.ContainsKey(ticket))
             {
                 return null;
             }
+           
+            var bag = _dicTicketBag[ticket];
+            _dicTicketBag.Remove(ticket);
+            return bag;
         }
     }
 }

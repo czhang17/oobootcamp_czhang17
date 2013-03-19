@@ -59,13 +59,16 @@ namespace CabinetSystemTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NoEmptyBoxException))]
         public void should_return_null_given_no_empty_box_when_store()
         {
             var cabinet = new Cabinet(boxNumber);
-            for (int i = 0; i < boxNumber; i++)
+            for (var i = 0; i < boxNumber; i++)
                 cabinet.Store(new Bag());
-            Assert.IsNull(cabinet.Store(new Bag()));
+            cabinet.Store(new Bag());
         }
     }
+
+
 }
 
