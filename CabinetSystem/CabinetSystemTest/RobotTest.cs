@@ -4,43 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CabinetSystemTest
 {
-    /// <summary>
-    /// Summary description for RobotTest
-    /// </summary>
     [TestClass]
     public class RobotTest
     {
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext { get; set; }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
         private static Robot SetupTwoCabinetRobot(int capacity1, int capacity2)
         {
-            Robot robot = new Robot();
+            var robot = new Robot();
             robot.Add(new Cabinet(capacity1));
             robot.Add(new Cabinet(capacity2));
 
@@ -87,8 +56,8 @@ namespace CabinetSystemTest
         {
             var robot = SetupTwoCabinetRobot();
 
-            Bag aBag = new Bag();
-            Ticket ticket = robot.Store(aBag);
+            var aBag = new Bag();
+            var ticket = robot.Store(aBag);
             Assert.IsNotNull(ticket);
         }
 
@@ -102,7 +71,7 @@ namespace CabinetSystemTest
             robot.Store(bagA);
 
             var bagB = new Bag();
-            Ticket ticket = robot.Store(bagB);
+            var ticket = robot.Store(bagB);
             Assert.IsNull(ticket);
         }
 
@@ -156,6 +125,18 @@ namespace CabinetSystemTest
 
             var theSecondPickedBag = robot.Pick(ticket);
             Assert.IsNull(theSecondPickedBag);
+        }
+        
+        [TestMethod]
+        public void should_not_pick_bag_successfully_given_not_existing_ticket()
+        {
+            var robot = SetupTwoCabinetRobot();
+            var bagToStore = new Bag();
+            robot.Store(bagToStore);
+            
+            var bag = robot.Pick(new Ticket());
+
+            Assert.IsNull(bag);
         }
     }
 }

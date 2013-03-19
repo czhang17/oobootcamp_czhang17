@@ -27,11 +27,11 @@ namespace CabinetSystem
 
         public Ticket Store(Bag bag)
         {
-            if (bag == null) throw new ArgumentException("Null bag is not allowed!");
+            if (bag == null) throw new ArgumentException("Invalid bag is not allowed!");
 
             var emptyCabinet = _cabinets.FirstOrDefault(x => x.HasEmptyBox());
 
-            return (emptyCabinet) == null ? null : emptyCabinet.Store(bag);
+            return emptyCabinet == null ? null : emptyCabinet.Store(bag);
         }
 
         public Bag Pick(Ticket ticket)
