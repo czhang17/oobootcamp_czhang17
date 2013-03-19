@@ -117,12 +117,15 @@ namespace CabinetSystemTest
         [TestMethod]
         public void should_store_bags_sequentially_given_bags()
         {
-            var robot = SetupTwoCabinetRobot(1, 1);
-
             var bag1 = new Bag();
             var bag2 = new Bag();
-
+            var cabinet1 = new Cabinet(1);
+            var cabinet2 = new Cabinet(1);
+            var robot = new Robot();
+            robot.Add(cabinet1);
+            robot.Add(cabinet2);
             robot.Store(bag1);
+
             Assert.IsFalse(cabinet1.HasEmptyBox());
             Assert.IsTrue(cabinet2.HasEmptyBox());
 
@@ -136,9 +139,9 @@ namespace CabinetSystemTest
         {
             var robot = SetupTwoCabinetRobot();
 
-            Bag bagToStore = new Bag();
-            Ticket ticket = robot.Store(bagToStore);
-            Bag bagPicked = robot.Pick(ticket);
+            var bagToStore = new Bag();
+            var ticket = robot.Store(bagToStore);
+            var bagPicked = robot.Pick(ticket);
 
             Assert.AreEqual(bagToStore, bagPicked);
         }
