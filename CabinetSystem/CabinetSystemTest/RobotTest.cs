@@ -145,5 +145,17 @@ namespace CabinetSystemTest
 
             Assert.AreEqual(bagToStore, bagPicked);
         }
+
+        [TestMethod]
+        public void should_not_pick_bag_successfully_given_used_ticket()
+        {
+            var robot = SetupTwoCabinetRobot();
+            var bagToStore = new Bag();
+            var ticket = robot.Store(bagToStore);
+            robot.Pick(ticket);
+
+            var theSecondPickedBag = robot.Pick(ticket);
+            Assert.IsNull(theSecondPickedBag);
+        }
     }
 }

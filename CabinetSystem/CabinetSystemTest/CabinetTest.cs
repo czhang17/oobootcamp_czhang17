@@ -66,8 +66,6 @@ namespace CabinetSystemTest
                 cabinet.Store(new Bag());
             Assert.IsNull(cabinet.Store(new Bag()));
         }
-
-        
     }
 }
 
